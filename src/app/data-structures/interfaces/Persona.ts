@@ -1,8 +1,9 @@
 export interface Persona{
-    id:         number;
-    userName:   string;
-    firstName:  string;
-    lastName:   string;
-    age:        number;
-    career:     string;
+    id:                 number;
+    nombre:             string;
+    apellido:           string;
+    fechaNacimiento:    Date;
+    fotoUsuario:        string;
+    estadoCivil:        number;
+    tieneHermanos:      boolean;
 }

@@ -1,68 +1,67 @@
 <form [formGroup]="formClient" novalidate> 
     <div class="mb-3">
-        <label for="userName" class="form-label">User Name</label>
-        <input type="text" class="form-control" name="userName" placeholder="Escribe user name"
-        required id="userName" formControlName="userName" >
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="nombre" placeholder="Escriba nombre"
+        required id="nombre" formControlName="nombre" >
 
-        <div *ngIf="formClient.controls['userName'].invalid && (formClient.controls['userName'].dirty || formClient.controls['userName'].touched)"
+        <div *ngIf="formClient.controls['nombre'].invalid && (formClient.controls['nombre'].dirty || formClient.controls['nombre'].touched)"
             class="text-danger">
-            <div *ngIf="formClient.controls['userName'].errors['required'] || 
-                        formClient.controls['userName'].errors['whitespace']" 
+            <div *ngIf="formClient.controls['nombre'].errors['required'] || 
+                        formClient.controls['nombre'].errors['whitespace'] ||
+                        formClient.controls['nombre'].errors['pattern']" 
                 class="text-danger">
                Error en el campo
             </div>
         </div>
 
-        <label for="firstName" class="form-label">First Name</label>
-        <input type="text" class="form-control" name="firstName" placeholder="Escribe tu first Name"
-        required id="firstName" formControlName="firstName" >
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" name="apellido" placeholder="Escriba apellido"
+        required id="apellido" formControlName="apellido" >
 
-        <div *ngIf="formClient.controls['firstName'].invalid && (formClient.controls['firstName'].dirty || formClient.controls['firstName'].touched)"
+        <div *ngIf="formClient.controls['apellido'].invalid && (formClient.controls['apellido'].dirty || formClient.controls['apellido'].touched)"
             class="text-danger">
-            <div *ngIf="formClient.controls['firstName'].errors['required'] || 
-                        formClient.controls['firstName'].errors['whitespace'] ||
-                        formClient.controls['firstName'].errors['pattern']"
+            <div *ngIf="formClient.controls['apellido'].errors['required'] || 
+                        formClient.controls['apellido'].errors['whitespace'] ||
+                        formClient.controls['apellido'].errors['pattern']"
                 class="text-danger">
                Error en el campo
             </div>
         </div>
 
-        <label for="lastName" class="form-label">Last Name</label>
-        <input type="text" class="form-control" name="lastName" placeholder="Escribe tu lastName"
-        required id="lastName" formControlName="lastName">
+        <label for="fechaNacimiento" class="form-label">Fecha Nacimiento</label>
+        <input type="date" class="form-control" name="fechaNacimiento" placeholder="Escribe tu fechaNacimiento"
+        required id="fechaNacimiento" formControlName="fechaNacimiento">
 
-        <div *ngIf="formClient.controls['lastName'].invalid && (formClient.controls['lastName'].dirty || formClient.controls['lastName'].touched)"
+        <div *ngIf="formClient.controls['fechaNacimiento'].invalid && (formClient.controls['fechaNacimiento'].dirty || formClient.controls['fechaNacimiento'].touched)"
             class="text-danger">
-            <div *ngIf="formClient.controls['lastName'].errors['required'] || 
-                        formClient.controls['lastName'].errors['whitespace'] ||
-                        formClient.controls['lastName'].errors['pattern']"
+            <div *ngIf="formClient.controls['fechaNacimiento'].errors['required'] || 
+                        formClient.controls['fechaNacimiento'].errors['whitespace']"
                 class="text-danger">
                Error en el campo
             </div>
         </div>
 
-        <label for="age" class="form-label">Age</label>
-        <input type="number" class="form-control" name="age" placeholder="Escribe tu age"
-        required id="age" formControlName="age">
+        <label for="fotoUsuario" class="form-label">Foto usuario</label>
+        <input type="file" class="form-control" name="fotoUsuario" (change)="onFileSelected($event)"
+        required id="fotoUsuario" formControlName="fotoUsuario">
 
-        <div *ngIf="formClient.controls['age'].invalid && (formClient.controls['age'].dirty || formClient.controls['age'].touched)"
+        <div *ngIf="formClient.controls['fotoUsuario'].invalid && (formClient.controls['fotoUsuario'].dirty || formClient.controls['fotoUsuario'].touched)"
             class="text-danger">
-            <div *ngIf="formClient.controls['age'].errors['required'] ||                         
-                        formClient.controls['age'].errors['pattern']"
+            <div *ngIf="formClient.controls['fotoUsuario'].errors['required'] ||                         
+                        formClient.controls['fotoUsuario'].errors['pattern']"
                 class="text-danger">
                Error en el campo
             </div>
         </div>
 
-        <label for="career" class="form-label">Career</label>
-        <input type="text" class="form-control" name="career" placeholder="Escribe career"
-        required id="career" formControlName="career">
+        <label for="estadoCivil" class="form-label">Estado civil</label>
+        <select formControlName="estadoCivil" class="form-control">
+            <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+          </select>
 
-        <div *ngIf="formClient.controls['career'].invalid && (formClient.controls['career'].dirty || formClient.controls['career'].touched)"
+        <div *ngIf="formClient.controls['estadoCivil'].invalid && (formClient.controls['estadoCivil'].dirty || formClient.controls['estadoCivil'].touched)"
             class="text-danger">
-            <div *ngIf="formClient.controls['career'].errors['required'] || 
-                        formClient.controls['career'].errors['whitespace'] ||
-                        formClient.controls['career'].errors['pattern']"
+            <div *ngIf="formClient.controls['estadoCivil'].errors['required'] "
                 class="text-danger">
                Error en el campo
             </div>

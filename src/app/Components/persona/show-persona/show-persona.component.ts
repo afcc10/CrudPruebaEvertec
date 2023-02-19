@@ -29,12 +29,13 @@ export class ShowPersonaComponent implements OnInit {
 
   modalAdd(){
     this.Persona = {
-      id:         0,
-      userName:   '',
-      firstName:  '',
-      lastName:   '',
-      age:        0,
-      career:     ''
+      id:               0,
+      nombre:           '',
+      apellido:         '',
+      fechaNacimiento:  '',
+      fotoUsuario:      '',
+      estadoCivil:      0,
+      tieneHermanos:    false
     }
     this.modalTitle = 'Add Persona';
     this.activateAddEditPersonaComponent = true;
@@ -52,7 +53,7 @@ export class ShowPersonaComponent implements OnInit {
   }
 
   async delete(item:any){
-    if(confirm(`Esta seguro de eliminar al estudiante ${item.id}`)){
+    if(confirm(`Esta seguro de eliminar a la persona ${item.id}`)){
       this.PersonaModel = await this._PersonaService.deleteById(item.id);
       if(this.PersonaModel.objectResponse !== null){      
       var closeModalBtn = document.getElementById('add-edit-modal-close');
