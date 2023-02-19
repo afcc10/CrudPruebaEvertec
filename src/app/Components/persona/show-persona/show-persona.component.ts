@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/data-structures/interfaces/Persona';
 import { BasicResponse } from 'src/app/data-structures/shared/basic-response';
-import { PersonaApiService } from 'src/app/Services/Persona-api.service'
+import { PersonaApiService } from 'src/app/Services/persona-api.service'
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-show-Persona',
-  templateUrl: './show-Persona.component.html',
-  styleUrls: ['./show-Persona.component.css']
+  selector: 'app-show-persona',
+  templateUrl: './show-persona.component.html',
+  styleUrls: ['./show-persona.component.css']
 })
 export class ShowPersonaComponent implements OnInit {
 

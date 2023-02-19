@@ -2,13 +2,13 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Persona } from 'src/app/data-structures/interfaces/Persona';
 import { BasicResponse } from 'src/app/data-structures/shared/basic-response';
-import { PersonaApiService } from 'src/app/Services/Persona-api.service'
+import { PersonaApiService } from 'src/app/Services/persona-api.service'
 import Swal from 'sweetalert2'
 
 @Component({
-  selector: 'app-add-edit-Persona',
-  templateUrl: './add-edit-Persona.component.html',
-  styleUrls: ['./add-edit-Persona.component.css']
+  selector: 'app-add-edit-persona',
+  templateUrl: './add-edit-persona.component.html',
+  styleUrls: ['./add-edit-persona.component.css']
 })
 export class AddEditPersonaComponent implements OnInit {
 
