@@ -67,6 +67,22 @@
             </div>
         </div>
 
+        <label for="tieneHermanos" class="form-label">Tiene Hermanos?</label>
+        <div *ngFor="let option of radioOptions">
+            <label>
+              <input type="radio" class="form-control" [value]="option.value" formControlName="tieneHermanos">
+              {{ option.label }}
+            </label>
+        </div>
+
+        <div *ngIf="formClient.controls['tieneHermanos'].invalid && (formClient.controls['tieneHermanos'].dirty || formClient.controls['tieneHermanos'].touched)"
+            class="text-danger">
+            <div *ngIf="formClient.controls['tieneHermanos'].errors['required'] "
+                class="text-danger">
+               Error en el campo
+            </div>
+        </div>
+
         <br>
         <button (click)="addPersona()" *ngIf="Persona.id==0" class="btn btn-primary">Add</button>
         <button (click)="UpdatePersona()" *ngIf="Persona.id!=0" class="btn btn-primary">Update</button>

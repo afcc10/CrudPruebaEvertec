@@ -23,6 +23,11 @@ export class AddEditPersonaComponent implements OnInit {
     { label: 'Casado', value: 1 }
   ];
 
+  radioOptions = [
+    { label: 'Si', value: true },
+    { label: 'No', value: false }
+  ];
+
   selectedOption: any;
 
   mobSoloLetras = "[a-zA-Z ]{2,254}";  
@@ -58,12 +63,12 @@ export class AddEditPersonaComponent implements OnInit {
       fechaNacimiento: ['', [this.noWhitespaceValidator,Validators.required]],       
       fotoUsuario: ['', [this.noWhitespaceValidator,Validators.required]],
       estadoCivil: ['', [Validators.required]],       
-      tieneHermanos: ['', [this.noWhitespaceValidator,]],
+      tieneHermanos: ['', [Validators.required]],
     });
   }
 
   onFileSelected(event) {
-    this.selectedFile = <File>event.target.files[0];
+    this.selectedFile = (<HTMLInputElement>event.target).files[0];    
   }
 
   LlenarFormulario()
@@ -153,7 +158,7 @@ export class AddEditPersonaComponent implements OnInit {
       nombre: this.formClient.get('nombre')?.value,
       apellido: this.formClient.get('apellido')?.value,
       fechaNacimiento: this.formClient.get('fechaNacimiento')?.value,
-      fotoUsuario: this.formClient.get('fotoUsuario')?.value,
+      fotoUsuario: "",
       estadoCivil: this.formClient.get('estadoCivil')?.value,
       tieneHermanos: this.formClient.get('tieneHermanos')?.value
     }
