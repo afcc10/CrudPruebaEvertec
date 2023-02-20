@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/data-structures/interfaces/Persona';
 import { BasicResponse } from 'src/app/data-structures/shared/basic-response';
-import { PersonaApiService } from 'src/app/Services/Persona-api.service'
+import { PersonaApiService } from 'src/app/Services/persona-api.service'
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-show-Persona',
-  templateUrl: './show-Persona.component.html',
-  styleUrls: ['./show-Persona.component.css']
+  selector: 'app-show-persona',
+  templateUrl: './show-persona.component.html',
+  styleUrls: ['./show-persona.component.css']
 })
 export class ShowPersonaComponent implements OnInit {
 
@@ -29,12 +29,13 @@ export class ShowPersonaComponent implements OnInit {
 
   modalAdd(){
     this.Persona = {
-      id:         0,
-      userName:   '',
-      firstName:  '',
-      lastName:   '',
-      age:        0,
-      career:     ''
+      id:               0,
+      nombre:           '',
+      apellido:         '',
+      fechaNacimiento:  '',
+      fotoUsuario:      '',
+      estadoCivil:      0,
+      tieneHermanos:    false
     }
     this.modalTitle = 'Add Persona';
     this.activateAddEditPersonaComponent = true;
@@ -52,7 +53,7 @@ export class ShowPersonaComponent implements OnInit {
   }
 
   async delete(item:any){
-    if(confirm(`Esta seguro de eliminar al estudiante ${item.id}`)){
+    if(confirm(`Esta seguro de eliminar a la persona ${item.id}`)){
       this.PersonaModel = await this._PersonaService.deleteById(item.id);
       if(this.PersonaModel.objectResponse !== null){      
       var closeModalBtn = document.getElementById('add-edit-modal-close');

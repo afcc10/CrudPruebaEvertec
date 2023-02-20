@@ -6,21 +6,35 @@
 <table class="table table-striped">
     <thead>
         <th>Id</th>
-        <th>UserName</th>
-        <th>FirstName</th>
-        <th>LastName</th>
-        <th>Age</th>
-        <th>Career</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha nacimiento</th>
+        <th>Estado civil</th>
+        <th>Tiene hermanos</th>
         <th>Options</th>
     </thead>
     <tbody>
         <tr *ngFor="let Persona of PersonaS?.objectResponse">
             <td>{{Persona.id}}</td>
-            <td>{{Persona.userName}}</td>
-            <td>{{Persona.firstName}}</td>
-            <td>{{Persona.lastName}}</td>
-            <td>{{Persona.age}}</td>
-            <td>{{Persona.career}}</td>
+            <td>{{Persona.nombre}}</td>
+            <td>{{Persona.apellido}}</td>
+            <td>{{Persona.fechaNacimiento | date:'dd/MM/yyyy'}}</td>
+            <td>
+              <div *ngIf="Persona.estadoCivil == 0">
+                Soltero
+              </div>
+              <div *ngIf="Persona.estadoCivil == 1">
+                Casado
+              </div>
+            </td>
+            <td>
+              <div *ngIf="Persona.tieneHermanos">
+                Si
+              </div>
+              <div *ngIf="!Persona.tieneHermanos">
+                No
+              </div>              
+            </td>
             <td>
               <button class="btn btn-outline-primary me-2 mb-1" (click)="modalEdit(Persona)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -59,7 +73,7 @@
           (click)="modalClose()" id="add-edit-modal-close"></button>
         </div>
         <div class="modal-body">
-          <app-add-edit-Persona [Persona]="Persona" *ngIf="activateAddEditPersonaComponent"></app-add-edit-Persona>
+          <app-add-edit-persona [Persona]="Persona" *ngIf="activateAddEditPersonaComponent"></app-add-edit-persona>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>          
